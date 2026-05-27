@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Wandernox - Premium Travel Experiences</title>
+  <meta name="description" content="Get in touch with Wandernox. We're here to help you plan your dream trip. Reach out for tour bookings, custom trips, or general inquiries.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <style>
+    /* === Contact Page Specific Styles === */
+
+    /* Map Section */
+    .map-section {
+      padding: 0;
+      position: relative;
+    }
+
+    .map-section iframe {
+      width: 100%;
+      height: 480px;
+      border: none;
+      border-radius: var(--radius-lg);
+      filter: saturate(0.85) contrast(1.05);
+      transition: var(--transition);
+    }
+
+    .map-section iframe:hover {
+      filter: saturate(1) contrast(1);
+    }
+
+    .map-wrapper {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .map-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      border: 2px solid rgba(0, 0, 0, 0.06);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* FAQ / Accordion */
+    .faq-accordion .accordion-item {
+      background: var(--card-bg);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: var(--radius-md) !important;
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .faq-accordion .accordion-item:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .faq-accordion .accordion-button {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      background: transparent;
+      padding: 20px 24px;
+      border: none;
+      box-shadow: none;
+    }
+
+    .faq-accordion .accordion-button:not(.collapsed) {
+      color: var(--accent);
+      background: rgba(249, 115, 22, 0.04);
+      box-shadow: none;
+    }
+
+    .faq-accordion .accordion-button::after {
+      background-image: none;
+      content: '\F282';
+      font-family: 'bootstrap-icons';
+      font-size: 1rem;
+      color: var(--accent);
+      width: auto;
+      height: auto;
+      transition: var(--transition);
+    }
+
+    .faq-accordion .accordion-button:not(.collapsed)::after {
+      content: '\F286';
+      transform: none;
+    }
+
+    .faq-accordion .accordion-button:focus {
+      box-shadow: none;
+      border-color: transparent;
+    }
+
+    .faq-accordion .accordion-body {
+      padding: 0 24px 20px;
+      color: var(--text-muted-dark);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* Contact Form Enhancements */
+    .contact-form-wrapper {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-form-wrapper h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .contact-form-wrapper p {
+      color: var(--text-muted-dark);
+      margin-bottom: 28px;
+      font-size: 0.95rem;
+    }
+
+    /* Contact Info Card Social Links */
+    .contact-info-card .social-links {
+      margin-top: 32px;
+      padding-top: 28px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .contact-info-card .social-links a {
+      width: 42px;
+      height: 42px;
+    }
+
+    /* Working Hours Badge */
+    .working-hours {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-top: 4px;
+      padding: 20px;
+      background: var(--glass);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--glass-border);
+    }
+
+    .working-hours .icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(249, 115, 22, 0.15);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .working-hours h5 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .working-hours span {
+      font-size: 0.85rem;
+      color: var(--text-muted-light);
+      display: block;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVBAR
+       ============================================ -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="bi bi-globe-americas"></i> Wandernox
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="destinations.html">Destinations</a></li>
+          <li class="nav-item"><a class="nav-link" href="tours.html">Tours</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-accent ms-lg-3">Book Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       PAGE HERO
+       ============================================ -->
+  <section class="page-hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&h=1080&fit=crop" alt="Beautiful lake and mountains landscape">
+    </div>
+    <div class="hero-overlay"></div>
+
+    <!-- Floating Shapes -->
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Particles -->
+    <div class="particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Get In <span>Touch</span></h1>
+      <p>We'd love to hear from you. Whether you're planning your next adventure or have a question, our team is here to help.</p>
+      <div class="breadcrumb-custom">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Contact</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CONTACT SECTION
+       ============================================ -->
+  <section class="section">
+    <div class="container">
+      <div class="row g-4 g-lg-5">
+
+        <!-- LEFT: Contact Info Card -->
+        <div class="col-lg-5" data-aos="fade-right">
+          <div class="contact-info-card">
+            <h3>Let's Start Your Journey</h3>
+            <p>Have questions about our tours or want to plan a custom trip? Reach out to us through any of the channels below and our travel experts will get back to you promptly.</p>
+
+            <!-- Address -->
+            <div class="contact-info-item">
+              <div class="icon">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <div>
+                <h5>Our Office</h5>
+                <span>123 Travel Street, Adventure City, AC 10001</span>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="contact-info-item">
+              <div class="icon">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div>
+                <h5>Call Us</h5>
+                <span>+1 (555) 123-4567</span>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="contact-info-item">
+              <div class="icon">
+                <i class="bi bi-envelope-fill"></i>
+              </div>
+              <div>
+                <h5>Email Us</h5>
+                <span>hello@wandernox.com</span>
+              </div>
+            </div>
+
+            <!-- Working Hours -->
+            <div class="working-hours">
+              <div class="icon">
+                <i class="bi bi-clock-fill"></i>
+              </div>
+              <div>
+                <h5>Working Hours</h5>
+                <span>Mon - Fri: 9AM - 6PM</span>
+                <span>Sat: 10AM - 4PM</span>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Contact Form -->
+        <div class="col-lg-7" data-aos="fade-left">
+          <div class="contact-form-wrapper">
+            <h3>Send Us a Message</h3>
+            <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+            <form class="contact-form">
+              <!-- Row: First Name, Last Name -->
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="firstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="firstName" placeholder="John">
+                </div>
+                <div class="col-md-6">
+                  <label for="lastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="lastName" placeholder="Doe">
+                </div>
+              </div>
+
+              <!-- Row: Email, Phone -->
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input type="email" class="form-control" id="email" placeholder="john@example.com">
+                </div>
+                <div class="col-md-6">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone" placeholder="+1 (555) 000-0000">
+                </div>
+              </div>
+
+              <!-- Select: Interested In -->
+              <div class="mb-3">
+                <label for="subject" class="form-label">Interested In</label>
+                <select class="form-select" id="subject">
+                  <option value="" disabled selected>Select an option</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="booking">Tour Booking</option>
+                  <option value="custom">Custom Trip</option>
+                  <option value="partnership">Partnership</option>
+                  <option value="support">Support</option>
+                </select>
+              </div>
+
+              <!-- Textarea: Message -->
+              <div class="mb-4">
+                <label for="message" class="form-label">Your Message</label>
+                <textarea class="form-control" id="message" rows="5" placeholder="Tell us about your dream trip or ask us anything..."></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-accent w-100 py-3" style="font-size: 1rem;">
+                <i class="bi bi-send-fill me-2"></i>Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       MAP SECTION
+       ============================================ -->
+  <section class="section map-section" style="padding-top: 0;">
+    <div class="container" data-aos="fade-up">
+      <div class="section-header">
+        <div class="section-tag">
+          <i class="bi bi-circle-fill"></i> Find Us
+        </div>
+        <h2>Visit Our <span>Office</span></h2>
+        <p>Drop by our office for a face-to-face consultation with our travel experts. We're conveniently located in the heart of the city.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="map-wrapper" data-aos="zoom-in" data-aos-delay="200">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076904379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Wandernox Office Location">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FAQ SECTION
+       ============================================ -->
+  <section class="section section-gradient">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag">
+          <i class="bi bi-circle-fill"></i> FAQ
+        </div>
+        <h2>Frequently Asked <span>Questions</span></h2>
+        <p>Find answers to the most common questions about our travel services, booking process, and policies.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="accordion faq-accordion" id="faqAccordion">
+
+            <!-- FAQ 1 -->
+            <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                  <i class="bi bi-question-circle-fill text-accent me-3"></i>How do I book a tour?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Booking a tour with Wandernox is easy! Simply browse our available tours on the <a href="tours.html" class="text-accent fw-semibold">Tours page</a>, select your preferred package, and click "Book Now." You'll be guided through a seamless online booking process where you can choose your dates, number of travelers, and any add-ons. Once your booking is confirmed, you'll receive a detailed itinerary and all essential travel information via email within 24 hours.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="accordion-item" data-aos="fade-up" data-aos-delay="150">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                  <i class="bi bi-question-circle-fill text-accent me-3"></i>What's your cancellation policy?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  We offer a flexible cancellation policy to give you peace of mind. Cancellations made up to 30 days before the departure date are eligible for a full refund. Cancellations within 15–30 days receive a 75% refund, and those within 7–14 days receive a 50% refund. For cancellations made less than 7 days before departure, a 25% refund applies. We understand that plans can change, and we always try to work with our travelers to find the best solution.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                  <i class="bi bi-question-circle-fill text-accent me-3"></i>Do you offer travel insurance?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Yes, we offer comprehensive travel insurance through our trusted insurance partners. Our plans cover trip cancellations, medical emergencies, lost luggage, flight delays, and more. We highly recommend adding travel insurance to your booking for complete peace of mind. Insurance can be added during the booking process or up to 14 days before your departure date. Our team can also help you choose the right coverage based on your destination and travel needs.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="accordion-item" data-aos="fade-up" data-aos-delay="250">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                  <i class="bi bi-question-circle-fill text-accent me-3"></i>Can I customize my tour itinerary?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Absolutely! Every trip can be tailored to your preferences. Whether you want to extend your stay at a particular destination, swap activities, upgrade accommodations, or add private excursions — our travel experts will work closely with you to craft the perfect itinerary. Simply select the "Custom Trip" option in our contact form or reach out to our team directly. We specialize in creating bespoke travel experiences that match your unique style and interests.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                  <i class="bi bi-question-circle-fill text-accent me-3"></i>What payment methods do you accept?
+                </button>
+              </h2>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  We accept a wide range of payment methods for your convenience, including Visa, Mastercard, American Express, and PayPal. We also support bank transfers for larger bookings. All transactions are processed through secure, encrypted payment gateways to ensure your financial information remains protected. For group bookings or premium packages, we also offer flexible installment plans — just ask our team for more details.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CTA SECTION
+       ============================================ -->
+  <section class="cta-section">
+    <!-- Floating Shapes -->
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Particles -->
+    <div class="particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+
+    <div class="container position-relative" style="z-index: 2;">
+      <div data-aos="fade-up">
+        <h2>Ready to Explore the <span>World?</span></h2>
+        <p>Let us turn your travel dreams into unforgettable memories. Start planning your next adventure with Wandernox today.</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <a href="tours.html" class="btn btn-accent btn-lg px-5">
+            <i class="bi bi-compass me-2"></i>Explore Tours
+          </a>
+          <a href="destinations.html" class="btn btn-glass btn-lg px-5">
+            <i class="bi bi-map me-2"></i>View Destinations
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand">
+            <h3><i class="bi bi-globe-americas"></i> Wandernox</h3>
+            <p>Discover the world's most breathtaking destinations with our expertly crafted travel experiences. Your journey of a lifetime starts here.</p>
+            <div class="social-links">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-twitter-x"></i></a>
+              <a href="#"><i class="bi bi-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5>Support</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h5>Newsletter</h5>
+          <p>Subscribe to get travel deals and inspiration delivered to your inbox.</p>
+          <form class="newsletter-form">
+            <div class="input-group">
+              <input type="email" class="form-control" placeholder="Your email address">
+              <button class="btn btn-accent" type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Wandernox. All rights reserved. Crafted with <i class="bi bi-heart-fill text-danger"></i> for travelers.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       BACK TO TOP BUTTON
+       ============================================ -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- ============================================
+       SCRIPTS
+       ============================================ -->
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function () {
+      const navbar = document.getElementById('mainNav');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      // Back to top button visibility
+      const backToTop = document.getElementById('backToTop');
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    // Back to top smooth scroll
+    document.getElementById('backToTop').addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Contact form submission handler
+    document.querySelector('.contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      const btn = this.querySelector('button[type="submit"]');
+      const originalHTML = btn.innerHTML;
+      
+      btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Sending...';
+      btn.disabled = true;
+      
+      setTimeout(function () {
+        btn.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i>Message Sent Successfully!';
+        btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        
+        setTimeout(function () {
+          btn.innerHTML = originalHTML;
+          btn.style.background = '';
+          btn.disabled = false;
+          document.querySelector('.contact-form').reset();
+        }, 3000);
+      }, 1500);
+    });
+  </script>
+
+</body>
+</html>
