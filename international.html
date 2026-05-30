@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>International Packages – Wandernox | Singapore, Dubai & More</title>
+  <meta name="description" content="Explore our curated international tour packages — Singapore, Dubai, Malaysia and beyond. Expertly crafted itineraries starting from ₹22,999.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="preloader"><div class="spinner"></div></div>
+  <button class="back-to-top"><i class="bi bi-arrow-up-short"></i></button>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><i class="bi bi-compass"></i> Wandernox</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Domestic</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="jibhi.html">Jibhi Special Package</a></li>
+              <li><a class="dropdown-item" href="#">Package of the Month</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="international.html">International</a></li>
+          <li class="nav-item"><a class="nav-link" href="jibhi.html">Wandernox Special – Jibhi</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="refund.html">Payment & Refund</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-accent ms-lg-3">Book Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="hero-bg"><img src="assets/images/singapore-024.webp" alt="International Destinations"></div>
+    <div class="hero-overlay"></div>
+    <div class="floating-shapes"><div class="shape shape-1"></div><div class="shape shape-2"></div><div class="shape shape-3"></div></div>
+    <div class="particles"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
+    <div class="hero-content">
+      <h1 data-aos="fade-up">International <span>Packages</span></h1>
+      <p data-aos="fade-up" data-aos-delay="100">Singapore, Dubai, Malaysia & beyond — every package crafted with care, curated for memories.</p>
+      <div class="breadcrumb-custom" data-aos="fade-up" data-aos-delay="200">
+        <a href="index.html">Home</a><span>/</span><span>International</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTER BAR -->
+  <section class="container" style="margin-top:-40px; position:relative; z-index:100;" data-aos="fade-up">
+    <div class="search-bar glass-search">
+      <div class="row g-3 align-items-end">
+        <div class="col-lg-3 col-md-6">
+          <label class="form-label fw-semibold"><i class="bi bi-geo-alt me-1 text-accent"></i> Destination</label>
+          <select class="form-select" id="destFilter">
+            <option value="all">All Destinations</option>
+            <option value="singapore">Singapore</option>
+            <option value="dubai">Dubai</option>
+            <option value="malaysia">Singapore & Malaysia</option>
+          </select>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <label class="form-label fw-semibold"><i class="bi bi-calendar3 me-1 text-accent"></i> Duration</label>
+          <select class="form-select" id="durFilter">
+            <option value="all">All Durations</option>
+            <option value="short">3-4 Nights</option>
+            <option value="medium">5-6 Nights</option>
+            <option value="long">7+ Nights</option>
+          </select>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <label class="form-label fw-semibold"><i class="bi bi-currency-rupee me-1 text-accent"></i> Budget</label>
+          <select class="form-select" id="budgetFilter">
+            <option value="all">Any Budget</option>
+            <option value="budget">Under ₹30,000</option>
+            <option value="mid">₹30,000 – ₹60,000</option>
+            <option value="premium">Above ₹60,000</option>
+          </select>
+        </div>
+        <div class="col-lg-3 col-md-12">
+          <button class="btn btn-accent w-100" style="padding:14px 24px;" onclick="filterPackages()"><i class="bi bi-funnel me-1"></i> Filter Packages</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SINGAPORE PACKAGES -->
+  <section class="section" id="singapore">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag"><i class="bi bi-geo-alt-fill"></i> Singapore</div>
+        <h2>🌏 Singapore <span>Packages</span></h2>
+        <p>From 4-day getaways to 8-day luxury escapes — discover the Lion City your way.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="row g-4">
+
+        <!-- Singapore 5 Day Delight -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+          <div class="tour-card" data-dest="singapore" data-dur="medium" data-budget="mid">
+            <div class="card-image">
+              <img src="assets/images/singapore-001.webp" alt="Singapore Delight 5 Days">
+              <span class="duration-badge"><i class="bi bi-clock me-1"></i> 5 Days / 4 Nights</span>
+              <div class="card-badge-top">Popular</div>
+            </div>
+            <div class="card-body">
+              <h4>Singapore Delight</h4>
+              <div class="location"><i class="bi bi-geo-alt-fill"></i> Singapore</div>
+              <p class="card-desc">Gardens by the Bay, Marina Bay SkyPark, Universal Studios, Sentosa Island & more.</p>
+              <div class="card-features">
+                <span class="feature"><i class="bi bi-cup-hot"></i> Breakfast</span>
+                <span class="feature"><i class="bi bi-building"></i> Aqueen Hotel</span>
+                <span class="feature"><i class="bi bi-bus-front"></i> SIC Transfers</span>
+              </div>
+              <div class="inclusions-mini">
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Cable Car</span>
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Wings of Time</span>
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Gardens by Bay</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span class="price">₹44,999 <small>/person</small></span>
+              <a href="singapore-5day.html" class="btn btn-accent btn-sm">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Singapore 4 Day Escape -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="tour-card" data-dest="singapore" data-dur="short" data-budget="mid">
+            <div class="card-image">
+              <img src="assets/images/singapore-009.webp" alt="Singapore Escape 4 Days">
+              <span class="duration-badge"><i class="bi bi-clock me-1"></i> 4 Days / 3 Nights</span>
+            </div>
+            <div class="card-body">
+              <h4>Singapore Escape</h4>
+              <div class="location"><i class="bi bi-geo-alt-fill"></i> Singapore</div>
+              <p class="card-desc">Merlion Park, Sentosa Island, Madame Tussauds, Butterfly Park & Chinatown.</p>
+              <div class="card-features">
+                <span class="feature"><i class="bi bi-cup-hot"></i> Breakfast</span>
+                <span class="feature"><i class="bi bi-building"></i> Aqueen Heritage</span>
+                <span class="feature"><i class="bi bi-bus-front"></i> SIC Transfers</span>
+              </div>
+              <div class="inclusions-mini">
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Cable Car</span>
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Luge Rides</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span class="price">₹40,500 <small>/person</small></span>
+              <a href="singapore-5day.html" class="btn btn-accent btn-sm">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Singapore 4 Day Getaway (USS) -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="tour-card" data-dest="singapore" data-dur="short" data-budget="mid">
+            <div class="card-image">
+              <img src="assets/images/singapore-017.webp" alt="Singapore Getaway 4 Days">
+              <span class="duration-badge"><i class="bi bi-clock me-1"></i> 4 Days / 3 Nights</span>
+            </div>
+            <div class="card-body">
+              <h4>Singapore Getaway</h4>
+              <div class="location"><i class="bi bi-geo-alt-fill"></i> Singapore</div>
+              <p class="card-desc">Iconic landmarks, Sentosa Island adventures & a full thrilling day at Universal Studios.</p>
+              <div class="card-features">
+                <span class="feature"><i class="bi bi-cup-hot"></i> Breakfast</span>
+                <span class="feature"><i class="bi bi-building"></i> Value Hotel Thomson</span>
+                <span class="feature"><i class="bi bi-bus-front"></i> SIC Transfers</span>
+              </div>
+              <div class="inclusions-mini">
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Universal Studios</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span class="price">₹40,500 <small>/person</small></span>
+              <a href="singapore-5day.html" class="btn btn-accent btn-sm">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Singapore & Malaysia -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+          <div class="tour-card" data-dest="malaysia" data-dur="medium" data-budget="mid">
+            <div class="card-image">
+              <img src="assets/images/singapore-024.webp" alt="Singapore Malaysia 5 Days">
+              <span class="duration-badge"><i class="bi bi-clock me-1"></i> 5 Days / 4 Nights</span>
+              <div class="card-badge-top">Best Seller</div>
+            </div>
+            <div class="card-body">
+              <h4>Singapore & Malaysia Discovery</h4>
+              <div class="location"><i class="bi bi-geo-alt-fill"></i> Singapore + Kuala Lumpur</div>
+              <p class="card-desc">Night Safari, Sentosa, Petronas Towers, Genting Highlands & Batu Caves.</p>
+              <div class="card-features">
+                <span class="feature"><i class="bi bi-cup-hot"></i> Breakfast</span>
+                <span class="feature"><i class="bi bi-building"></i> 2 Hotels</span>
+                <span class="feature"><i class="bi bi-bus-front"></i> SIC Transfers</span>
+              </div>
+              <div class="inclusions-mini">
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Night Safari</span>
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Genting Cable Car</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span class="price">₹54,999 <small>/person</small></span>
+              <a href="singapore-5day.html" class="btn btn-accent btn-sm">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Singapore Cruise -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" id="cruise">
+          <div class="tour-card" data-dest="singapore" data-dur="medium" data-budget="premium">
+            <div class="card-image">
+              <img src="assets/images/singapore-048.webp" alt="Singapore Cruise">
+              <span class="duration-badge"><i class="bi bi-clock me-1"></i> 6 Days / 5 Nights</span>
+            </div>
+            <div class="card-body">
+              <h4>Singapore Cruise Getaway</h4>
+              <div class="location"><i class="bi bi-geo-alt-fill"></i> Singapore + Genting Dream Cruise</div>
+              <p class="card-desc">Night Safari, city highlights, Sentosa, Universal Studios & 2 nights on the Genting Dream Cruise.</p>
+              <div class="card-features">
+                <span class="feature"><i class="bi bi-ship"></i> Cruise Incl.</span>
+                <span class="feature"><i class="bi bi-building"></i> Hotel + Cruise</span>
+                <span class="feature"><i class="bi bi-bus-front"></i> SIC Transfers</span>
+              </div>
+              <div class="inclusions-mini">
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Night Safari</span>
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Universal Studios</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span class="price">₹74,999 <small>/person</small></span>
+              <a href="singapore-5day.html" class="btn btn-accent btn-sm">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Singapore 8 Day Elegant -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="tour-card" data-dest="singapore" data-dur="long" data-budget="premium">
+            <div class="card-image">
+              <img src="assets/images/singapore-060.webp" alt="Singapore 8 Days">
+              <span class="duration-badge"><i class="bi bi-clock me-1"></i> 8 Days / 7 Nights</span>
+              <div class="card-badge-top">Premium</div>
+            </div>
+            <div class="card-body">
+              <h4>Elegant Singapore Gateway</h4>
+              <div class="location"><i class="bi bi-geo-alt-fill"></i> Singapore</div>
+              <p class="card-desc">The ultimate Singapore immersion — Sentosa, USS, Singapore Zoo, Bird Paradise, Night Safari, Gardens by the Bay & more.</p>
+              <div class="card-features">
+                <span class="feature"><i class="bi bi-cup-hot"></i> Breakfast</span>
+                <span class="feature"><i class="bi bi-building"></i> Novotel</span>
+                <span class="feature"><i class="bi bi-bus-front"></i> SIC Transfers</span>
+              </div>
+              <div class="inclusions-mini">
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Singapore Zoo</span>
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Bird Paradise</span>
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Singapore Flyer</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span class="price">₹89,999 <small>/person</small></span>
+              <a href="singapore-5day.html" class="btn btn-accent btn-sm">View Details</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DUBAI PACKAGES -->
+  <section class="section section-gradient" id="dubai">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag"><i class="bi bi-geo-alt-fill"></i> Dubai</div>
+        <h2>🌆 Dubai <span>Packages</span></h2>
+        <p>Glittering skylines, golden deserts, and world-class thrills — experience Dubai the Wandernox way.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="row g-4">
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+          <div class="tour-card" data-dest="dubai" data-dur="medium" data-budget="budget">
+            <div class="card-image">
+              <img src="assets/images/singapore-070.webp" alt="Dubai Trio Burj Khalifa">
+              <span class="duration-badge"><i class="bi bi-clock me-1"></i> 4 Days / 3 Nights</span>
+            </div>
+            <div class="card-body">
+              <h4>Dubai Trio with Burj Khalifa</h4>
+              <div class="location"><i class="bi bi-geo-alt-fill"></i> Dubai, UAE</div>
+              <p class="card-desc">Dhow Cruise Creek, half-day city tour, desert safari with BBQ, and Burj Khalifa At The Top.</p>
+              <div class="card-features">
+                <span class="feature"><i class="bi bi-cup-hot"></i> Breakfast</span>
+                <span class="feature"><i class="bi bi-building"></i> Grayton Hotel (4★)</span>
+                <span class="feature"><i class="bi bi-bus-front"></i> Private Transfers</span>
+              </div>
+              <div class="inclusions-mini">
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Burj Khalifa</span>
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Desert Safari</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span class="price">₹26,500 <small>/person</small></span>
+              <a href="contact.html" class="btn btn-accent btn-sm">Enquire Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="tour-card" data-dest="dubai" data-dur="short" data-budget="budget">
+            <div class="card-image">
+              <img src="assets/images/singapore-072.webp" alt="Dubai Marina Cruise">
+              <span class="duration-badge"><i class="bi bi-clock me-1"></i> 4 Days / 3 Nights</span>
+              <div class="card-badge-top">Popular</div>
+            </div>
+            <div class="card-body">
+              <h4>Dubai Trio with Marina Cruise</h4>
+              <div class="location"><i class="bi bi-geo-alt-fill"></i> Dubai, UAE</div>
+              <p class="card-desc">Marina Dhow Cruise dinner, city tour, Burj Khalifa & Dubai Mall, desert safari.</p>
+              <div class="card-features">
+                <span class="feature"><i class="bi bi-cup-hot"></i> Breakfast</span>
+                <span class="feature"><i class="bi bi-building"></i> Zabeel House by Jumeirah</span>
+                <span class="feature"><i class="bi bi-bus-front"></i> Private Transfers</span>
+              </div>
+              <div class="inclusions-mini">
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Marina Cruise</span>
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Dubai Aquarium</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span class="price">₹32,999 <small>/person</small></span>
+              <a href="contact.html" class="btn btn-accent btn-sm">Enquire Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="tour-card" data-dest="dubai" data-dur="medium" data-budget="budget">
+            <div class="card-image">
+              <img src="assets/images/singapore-075.webp" alt="Dubai with Abu Dhabi">
+              <span class="duration-badge"><i class="bi bi-clock me-1"></i> 5 Days / 4 Nights</span>
+            </div>
+            <div class="card-body">
+              <h4>Dubai with Abu Dhabi City Tour</h4>
+              <div class="location"><i class="bi bi-geo-alt-fill"></i> Dubai + Abu Dhabi</div>
+              <p class="card-desc">Creek cruise, city tour, desert safari, Burj Khalifa, Sheikh Zayed Mosque & Heritage Village.</p>
+              <div class="card-features">
+                <span class="feature"><i class="bi bi-cup-hot"></i> Breakfast</span>
+                <span class="feature"><i class="bi bi-building"></i> Admiral Plaza Hotel</span>
+                <span class="feature"><i class="bi bi-bus-front"></i> SIC Transfers</span>
+              </div>
+              <div class="inclusions-mini">
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Sheikh Zayed Mosque</span>
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Genting Highlands</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span class="price">₹21,999 <small>/person</small></span>
+              <a href="contact.html" class="btn btn-accent btn-sm">Enquire Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+          <div class="tour-card" data-dest="dubai" data-dur="medium" data-budget="mid">
+            <div class="card-image">
+              <img src="assets/images/singapore-078.webp" alt="Dubai Theme Parks">
+              <span class="duration-badge"><i class="bi bi-clock me-1"></i> 5 Days / 4 Nights</span>
+            </div>
+            <div class="card-body">
+              <h4>Discover Dubai with Theme Parks</h4>
+              <div class="location"><i class="bi bi-geo-alt-fill"></i> Dubai, UAE</div>
+              <p class="card-desc">Dhow Creek cruise, desert safari, Bollywood Parks or Motiongate, Legoland & more.</p>
+              <div class="card-features">
+                <span class="feature"><i class="bi bi-cup-hot"></i> Breakfast</span>
+                <span class="feature"><i class="bi bi-building"></i> Hampton + Rove</span>
+                <span class="feature"><i class="bi bi-bus-front"></i> SIC Transfers</span>
+              </div>
+              <div class="inclusions-mini">
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> 2 Parks Included</span>
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Desert Safari</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span class="price">₹27,999 <small>/person</small></span>
+              <a href="contact.html" class="btn btn-accent btn-sm">Enquire Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="tour-card" data-dest="dubai" data-dur="medium" data-budget="budget">
+            <div class="card-image">
+              <img src="assets/images/singapore-080.webp" alt="Dubai Bollywood Parks">
+              <span class="duration-badge"><i class="bi bi-clock me-1"></i> 4 Days / 3 Nights</span>
+            </div>
+            <div class="card-body">
+              <h4>Dubai Trio with Bollywood Parks™</h4>
+              <div class="location"><i class="bi bi-geo-alt-fill"></i> Dubai, UAE</div>
+              <p class="card-desc">Burj Khalifa, Dubai Fountain, city tour, desert safari, Creek cruise & Bollywood Parks.</p>
+              <div class="card-features">
+                <span class="feature"><i class="bi bi-cup-hot"></i> Breakfast</span>
+                <span class="feature"><i class="bi bi-building"></i> Citymax Hotel Bur Dubai</span>
+                <span class="feature"><i class="bi bi-bus-front"></i> Private Transfers</span>
+              </div>
+              <div class="inclusions-mini">
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Bollywood Parks</span>
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Burj Khalifa</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span class="price">₹22,999 <small>/person</small></span>
+              <a href="contact.html" class="btn btn-accent btn-sm">Enquire Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="tour-card" data-dest="dubai" data-dur="medium" data-budget="budget">
+            <div class="card-image">
+              <img src="assets/images/singapore-082.webp" alt="Dubai Grand Excelsior">
+              <span class="duration-badge"><i class="bi bi-clock me-1"></i> 5 Days / 4 Nights</span>
+            </div>
+            <div class="card-body">
+              <h4>Dubai Trio – Hotel Grand Excelsior</h4>
+              <div class="location"><i class="bi bi-geo-alt-fill"></i> Dubai, UAE</div>
+              <p class="card-desc">Dhow Creek cruise, guided city tour, Burj Khalifa, leisure day & classic desert safari.</p>
+              <div class="card-features">
+                <span class="feature"><i class="bi bi-cup-hot"></i> Breakfast</span>
+                <span class="feature"><i class="bi bi-building"></i> Grand Excelsior (4★)</span>
+                <span class="feature"><i class="bi bi-bus-front"></i> SIC Transfers</span>
+              </div>
+              <div class="inclusions-mini">
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Burj Khalifa</span>
+                <span class="inc-tag"><i class="bi bi-check-circle"></i> Desert Safari</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span class="price">₹26,999 <small>/person</small></span>
+              <a href="contact.html" class="btn btn-accent btn-sm">Enquire Now</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="floating-shapes"><div class="shape shape-1"></div><div class="shape shape-2"></div></div>
+    <div class="container position-relative" style="z-index:2;" data-aos="zoom-in">
+      <h2>Can't Find What You're <span>Looking For?</span></h2>
+      <p>We specialize in custom itineraries. Tell us your dream destination, dates & budget — we'll craft the perfect package for you.</p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="contact.html" class="btn btn-accent btn-lg"><i class="bi bi-send me-2"></i>Get a Custom Quote</a>
+        <a href="tel:+91" class="btn btn-glass btn-lg"><i class="bi bi-telephone me-2"></i>Call Us Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand">
+            <h3><i class="bi bi-compass"></i> Wandernox</h3>
+            <p class="footer-tagline">Turning Miles into Smiles!</p>
+            <p>Your trusted travel partner for Singapore, Dubai, and beyond.</p>
+            <div class="social-links">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-whatsapp"></i></a>
+              <a href="#"><i class="bi bi-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4"><h5>Quick Links</h5><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="international.html">International</a></li><li><a href="jibhi.html">Domestic</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+        <div class="col-lg-2 col-md-4"><h5>Destinations</h5><ul class="footer-links"><li><a href="#singapore">Singapore</a></li><li><a href="#dubai">Dubai</a></li><li><a href="#malaysia">Malaysia</a></li><li><a href="jibhi.html">Jibhi</a></li></ul></div>
+        <div class="col-lg-4 col-md-4"><h5>Support</h5><ul class="footer-links"><li><a href="blog.html"><i class="bi bi-journal-text me-2"></i>Blog</a></li><li><a href="refund.html"><i class="bi bi-receipt me-2"></i>Payment & Refund Policy</a></li><li><a href="refund.html#terms"><i class="bi bi-file-text me-2"></i>Terms & Conditions</a></li><li><a href="contact.html"><i class="bi bi-envelope me-2"></i>Write to Us</a></li></ul></div>
+      </div>
+      <hr>
+      <div class="footer-bottom"><p>&copy; 2026 Wandernox. All rights reserved. Crafted with <i class="bi bi-heart-fill text-danger"></i> for travelers.</p></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true, offset: 100 });
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('mainNav');
+      const btn = document.querySelector('.back-to-top');
+      if (window.scrollY > 50) { nav.classList.add('scrolled'); btn.classList.add('visible'); }
+      else { nav.classList.remove('scrolled'); btn.classList.remove('visible'); }
+    });
+    window.addEventListener('load', () => { document.querySelector('.preloader').classList.add('hidden'); });
+    document.querySelector('.back-to-top').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    function filterPackages() {
+      const dest = document.getElementById('destFilter').value;
+      const dur = document.getElementById('durFilter').value;
+      const budget = document.getElementById('budgetFilter').value;
+      document.querySelectorAll('.tour-card').forEach(card => {
+        const d = card.dataset.dest, du = card.dataset.dur, b = card.dataset.budget;
+        const show = (dest === 'all' || d === dest) && (dur === 'all' || du === dur) && (budget === 'all' || b === budget);
+        card.closest('.col-lg-4').style.display = show ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

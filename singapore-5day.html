@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Singapore Packages – Wandernox | Delight, Escape, Getaway & More</title>
+  <meta name="description" content="Explore Wandernox's Singapore travel packages — 5D/4N Delight, 4D/3N Escape, Malaysia combo, Cruise and 8-day luxury. Starting from ₹40,500 per person.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    /* ---- TRANSPARENT BOOKING BAR ---- */
+    .dest-hero { position: relative; height: 100vh; min-height: 600px; overflow: hidden; }
+    .dest-hero-bg { position: absolute; inset: 0; }
+    .dest-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .dest-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.8) 100%); }
+    .dest-hero-content { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding-top: 80px; }
+    .dest-hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.4); color: #fb923c; padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; backdrop-filter: blur(8px); }
+    .dest-hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 16px; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+    .dest-hero-title span { color: var(--accent); font-style: italic; }
+    .dest-hero-sub { color: rgba(255,255,255,0.85); font-size: 1.1rem; max-width: 600px; margin-bottom: 0; }
+
+    /* TRANSPARENT BOOKING BAR */
+    .dest-booking-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding: 24px 0;
+      z-index: 10;
+    }
+    .dest-booking-bar .form-label { color: rgba(255,255,255,0.9); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .dest-booking-bar .form-select,
+    .dest-booking-bar .form-control {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      backdrop-filter: blur(4px);
+    }
+    .dest-booking-bar .form-select option { background: #1e293b; color: #fff; }
+    .dest-booking-bar .form-select:focus,
+    .dest-booking-bar .form-control:focus { background: rgba(255,255,255,0.18); border-color: var(--accent); box-shadow: 0 0 0 3px rgba(249,115,22,0.2); outline: none; }
+    .dest-booking-bar .form-select::placeholder,
+    .dest-booking-bar .form-control::placeholder { color: rgba(255,255,255,0.5); }
+
+    /* Package tabs */
+    .pkg-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+    .pkg-tab { padding: 10px 22px; border-radius: 50px; border: 2px solid rgba(249,115,22,0.3); background: transparent; color: var(--text-dark); font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; }
+    .pkg-tab:hover, .pkg-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* Package detail card */
+    .pkg-detail { display: none; }
+    .pkg-detail.active { display: block; }
+
+    .itinerary-card { background: #fff; border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-md); margin-bottom: 16px; border-left: 4px solid var(--accent); transition: var(--transition); }
+    .itinerary-card:hover { transform: translateX(4px); box-shadow: var(--shadow-lg); }
+    .day-number { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: linear-gradient(135deg, var(--accent), #fb923c); color: #fff; border-radius: 50%; font-weight: 800; font-size: 0.9rem; margin-right: 14px; flex-shrink: 0; }
+    .day-title { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--text-dark); }
+    .day-emoji { font-size: 1.2rem; margin-right: 6px; }
+    .day-body { margin-top: 16px; color: var(--text-muted-dark); font-size: 0.92rem; line-height: 1.75; padding-left: 58px; }
+
+    .inclusions-list { list-style: none; padding: 0; margin: 0; }
+    .inclusions-list li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.92rem; color: var(--text-muted-dark); }
+    .inclusions-list li:last-child { border-bottom: none; }
+    .inclusions-list li i { color: var(--emerald); font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+
+    .price-hero-box { background: linear-gradient(135deg, var(--accent), #fb923c); border-radius: var(--radius-lg); padding: 32px; color: #fff; text-align: center; }
+    .price-hero-box .big-price { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; }
+    .price-hero-box .per-person { font-size: 0.9rem; opacity: 0.85; }
+
+    .sticky-pkg-sidebar { position: sticky; top: 100px; }
+
+    .gallery-mosaic { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-radius: var(--radius-lg); overflow: hidden; }
+    .gallery-mosaic img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.4s; cursor: pointer; }
+    .gallery-mosaic img:hover { transform: scale(1.04); }
+    .gallery-mosaic img:first-child { grid-column: span 2; height: 260px; }
+
+    /* Top 15 Activities */
+    .activity-card { background: #fff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); }
+    .activity-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .activity-card img { width: 100%; height: 180px; object-fit: cover; }
+    .activity-card-body { padding: 18px; }
+    .activity-num { display: inline-block; width: 28px; height: 28px; background: var(--accent); color: #fff; border-radius: 50%; font-size: 0.75rem; font-weight: 800; text-align: center; line-height: 28px; margin-bottom: 8px; }
+    .activity-card-body h5 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .activity-card-body p { font-size: 0.82rem; color: var(--text-muted-dark); line-height: 1.5; margin: 0; }
+
+    @media (max-width: 768px) {
+      .dest-hero { height: auto; min-height: 100vh; }
+      .dest-hero-content { position: relative; padding: 120px 0 180px; }
+      .dest-booking-bar { position: relative; }
+      .gallery-mosaic { grid-template-columns: 1fr 1fr; }
+      .gallery-mosaic img:first-child { grid-column: span 2; }
+      .day-body { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preloader"><div class="spinner"></div></div>
+  <button class="back-to-top"><i class="bi bi-arrow-up-short"></i></button>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><i class="bi bi-compass"></i> Wandernox</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Domestic</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="jibhi.html">Jibhi Special Package</a></li>
+              <li><a class="dropdown-item" href="#">Package of the Month</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="international.html">International</a></li>
+          <li class="nav-item"><a class="nav-link" href="jibhi.html">Wandernox Special – Jibhi</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="refund.html">Payment & Refund</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-accent ms-lg-3">Book Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- DESTINATION HERO with TRANSPARENT BOOKING BAR -->
+  <div class="dest-hero">
+    <div class="dest-hero-bg">
+      <img src="assets/images/singapore-009.webp" alt="Singapore skyline and Gardens by the Bay" id="heroImg">
+    </div>
+    <div class="dest-hero-overlay"></div>
+
+    <div class="dest-hero-content">
+      <div class="container">
+        <div class="dest-hero-badge" data-aos="fade-down"><i class="bi bi-geo-alt-fill"></i> Singapore, Southeast Asia</div>
+        <h1 class="dest-hero-title" data-aos="fade-up">Discover the<br><span>Lion City</span></h1>
+        <p class="dest-hero-sub" data-aos="fade-up" data-aos-delay="100">Futuristic skylines, lush gardens, thrilling theme parks, and rich multicultural heritage — all in one extraordinary destination.</p>
+      </div>
+    </div>
+
+    <!-- TRANSPARENT BOOKING BAR -->
+    <div class="dest-booking-bar">
+      <div class="container">
+        <form class="row g-3 align-items-end">
+          <div class="col-lg-3 col-md-6">
+            <label class="form-label"><i class="bi bi-box-seam me-1"></i> Choose Package</label>
+            <select class="form-select" id="pkgSelect" onchange="switchPackage(this.value)">
+              <option value="pkg1">Singapore Delight – 5D/4N (₹44,999)</option>
+              <option value="pkg2">Singapore Escape – 4D/3N (₹40,500)</option>
+              <option value="pkg3">Singapore Getaway – 4D/3N (₹40,500)</option>
+              <option value="pkg4">Singapore & Malaysia – 5D/4N (₹54,999)</option>
+              <option value="pkg5">Singapore Cruise – 6D/5N (₹74,999)</option>
+              <option value="pkg6">Elegant Gateway – 8D/7N (₹89,999)</option>
+            </select>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <label class="form-label"><i class="bi bi-calendar3 me-1"></i> Travel Date</label>
+            <input type="date" class="form-control">
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <label class="form-label"><i class="bi bi-people me-1"></i> Travelers</label>
+            <select class="form-select">
+              <option>1 Person</option>
+              <option selected>2 Persons</option>
+              <option>3 Persons</option>
+              <option>4 Persons</option>
+              <option>5+ Persons</option>
+            </select>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <label class="form-label"><i class="bi bi-moon-stars me-1"></i> Room Type</label>
+            <select class="form-select">
+              <option>Standard Room</option>
+              <option>Deluxe Room</option>
+              <option>Superior Room</option>
+            </select>
+          </div>
+          <div class="col-lg-3 col-md-12">
+            <a href="contact.html" class="btn btn-accent w-100" style="padding:13px 20px; font-size:0.95rem;">
+              <i class="bi bi-send me-2"></i>Enquire & Book
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- PACKAGE SELECTOR TABS & DETAILS -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb" class="mb-4" data-aos="fade-up">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="international.html">International</a></li>
+          <li class="breadcrumb-item active">Singapore Packages</li>
+        </ol>
+      </nav>
+
+      <div class="section-header text-start mb-4" data-aos="fade-up">
+        <div class="section-tag"><i class="bi bi-globe-asia-australia"></i> Singapore</div>
+        <h2>🌏 Singapore <span>Tour Packages</span></h2>
+        <p>Choose from 6 carefully crafted Singapore itineraries — from quick getaways to extended luxury escapes.</p>
+      </div>
+
+      <!-- Package Tabs -->
+      <div class="pkg-tabs" data-aos="fade-up">
+        <button class="pkg-tab active" onclick="switchPackage('pkg1', this)">5D/4N – Delight</button>
+        <button class="pkg-tab" onclick="switchPackage('pkg2', this)">4D/3N – Escape</button>
+        <button class="pkg-tab" onclick="switchPackage('pkg3', this)">4D/3N – Getaway</button>
+        <button class="pkg-tab" onclick="switchPackage('pkg4', this)">Singapore & Malaysia</button>
+        <button class="pkg-tab" onclick="switchPackage('pkg5', this)">Cruise – 6D/5N</button>
+        <button class="pkg-tab" onclick="switchPackage('pkg6', this)">Elegant – 8D/7N</button>
+      </div>
+
+      <!-- ============ PACKAGE 1: SINGAPORE DELIGHT ============ -->
+      <div class="pkg-detail active" id="pkg1">
+        <div class="row g-5">
+          <div class="col-lg-8" data-aos="fade-up">
+            <div class="mb-4">
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem;">🌏 Singapore Delight – 5 Days Itinerary</h3>
+              <p class="text-muted">Embark on a captivating journey through Singapore — from the legendary Merlion Park and Marina Bay to Sentosa Island, Universal Studios, and the breathtaking Gardens by the Bay.</p>
+            </div>
+
+            <div class="gallery-mosaic mb-5">
+              <img src="assets/images/singapore-001.webp" alt="Singapore Gardens by the Bay">
+              <img src="assets/images/singapore-003.webp" alt="Merlion Park">
+              <img src="assets/images/singapore-005.webp" alt="Marina Bay Sands">
+            </div>
+
+            <h5 class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i>Inclusions</h5>
+            <ul class="inclusions-list mb-5">
+              <li><i class="bi bi-check-circle-fill"></i>4 Nights' accommodation at Aqueen Hotel Lavender or similar</li>
+              <li><i class="bi bi-check-circle-fill"></i>Meals on Breakfast basis at the Hotel</li>
+              <li><i class="bi bi-check-circle-fill"></i>Return Airport Transfers</li>
+              <li><i class="bi bi-check-circle-fill"></i>All tours and transfers on SIC basis</li>
+              <li><i class="bi bi-check-circle-fill"></i>Cable Car 1-Way, Wings of Time 2nd Show</li>
+              <li><i class="bi bi-check-circle-fill"></i>Luge and Sky Rides – 2 Rounds in Sentosa</li>
+              <li><i class="bi bi-check-circle-fill"></i>Garden by the Bay and Marina Bay Sky Pass</li>
+            </ul>
+
+            <h5 class="mb-3"><i class="bi bi-calendar3 text-accent me-2"></i>Day-Wise Itinerary</h5>
+
+            <div class="itinerary-card">
+              <div class="d-flex align-items-center"><span class="day-number">1</span><span class="day-title"><span class="day-emoji">🗓️</span>Arrival in Singapore – Welcome to the Lion City</span></div>
+              <div class="day-body">Arrive at the award-winning Changi International Airport. Our local representative will greet you and assist with your transfer to the hotel. The rest of the day is free to unwind — stroll down Orchard Road, visit Bugis Street Market, or enjoy local delicacies at a hawker centre.</div>
+            </div>
+
+            <div class="itinerary-card">
+              <div class="d-flex align-items-center"><span class="day-number">2</span><span class="day-title"><span class="day-emoji">🏙️</span>Iconic Singapore City Tour & Sentosa Island Escapade</span></div>
+              <div class="day-body">After breakfast, enjoy a panoramic half-day city tour visiting <strong>Merlion Park</strong>, <strong>Orchard Road</strong>, and the culturally rich lanes of <strong>Chinatown</strong>. In the afternoon, head to <strong>Sentosa Island</strong> for a scenic one-way cable car ride, followed by Madame Tussauds Singapore (4-in-1 experience: wax museum, Images of Singapore LIVE, Spirit of Singapore boat ride, Marvel 4D). As the sun sets, experience the enchanting <strong>Wings of Time</strong> night show.</div>
+            </div>
+
+            <div class="itinerary-card">
+              <div class="d-flex align-items-center"><span class="day-number">3</span><span class="day-title"><span class="day-emoji">🎢</span>Full-Day Thrill at Universal Studios Singapore</span></div>
+              <div class="day-body">After breakfast, enjoy a full day at <strong>Universal Studios Singapore</strong> — Southeast Asia's first Hollywood-themed theme park. Explore 7 themed zones: Hollywood Boulevard, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away, and Madagascar. Transformers 3D, Revenge of the Mummy, Shrek 4D, and much more await!</div>
+            </div>
+
+            <div class="itinerary-card">
+              <div class="d-flex align-items-center"><span class="day-number">4</span><span class="day-title"><span class="day-emoji">🌸</span>Gardens by the Bay & Marina Bay Sands SkyPark</span></div>
+              <div class="day-body">Morning at the world-renowned <strong>Gardens by the Bay</strong> — explore the Flower Dome (world's largest glass greenhouse) and the misty Cloud Forest with its 35-meter indoor waterfall. In the evening, head to the <strong>Marina Bay Sands SkyPark</strong> on the 57th floor for breathtaking 360-degree panoramic views of Singapore's skyline.</div>
+            </div>
+
+            <div class="itinerary-card">
+              <div class="d-flex align-items-center"><span class="day-number">5</span><span class="day-title"><span class="day-emoji">✈️</span>Farewell Singapore – Departure with Beautiful Memories</span></div>
+              <div class="day-body">Enjoy a relaxed breakfast at the hotel. After checking out, our team will assist with a comfortable transfer to Changi International Airport. Bid farewell to the Lion City with a heart full of memories!</div>
+            </div>
+
+            <div class="alert alert-warning mt-4" style="border-radius: var(--radius-md); border-left: 4px solid #f97316;">
+              <i class="bi bi-info-circle me-2"></i><strong>Note:</strong> This is a tentative itinerary. The final itinerary will be confirmed at the time of booking.
+            </div>
+          </div>
+
+          <!-- SIDEBAR -->
+          <div class="col-lg-4">
+            <div class="sticky-pkg-sidebar" data-aos="fade-left">
+              <div class="price-hero-box mb-4">
+                <div class="per-person">Starting From</div>
+                <div class="big-price">₹44,999</div>
+                <div class="per-person mb-3">Per Person (T&C Apply)</div>
+                <a href="contact.html" class="btn btn-light w-100 fw-bold"><i class="bi bi-send me-2"></i>Book This Package</a>
+              </div>
+              <div class="feature-card mb-4">
+                <h6 class="fw-bold mb-3"><i class="bi bi-info-circle me-2 text-accent"></i>Package Highlights</h6>
+                <ul class="inclusions-list">
+                  <li><i class="bi bi-clock"></i>5 Days / 4 Nights</li>
+                  <li><i class="bi bi-building"></i>Hotel: Aqueen Hotel Lavender</li>
+                  <li><i class="bi bi-cup-hot"></i>Meals: Breakfast Included</li>
+                  <li><i class="bi bi-bus-front"></i>Transfers: SIC Basis</li>
+                  <li><i class="bi bi-star-fill text-warning"></i>Sentosa Island Full Day</li>
+                  <li><i class="bi bi-star-fill text-warning"></i>Universal Studios Full Day</li>
+                  <li><i class="bi bi-star-fill text-warning"></i>Gardens by the Bay</li>
+                  <li><i class="bi bi-star-fill text-warning"></i>Marina Bay SkyPark</li>
+                </ul>
+              </div>
+              <div class="feature-card">
+                <h6 class="fw-bold mb-3"><i class="bi bi-telephone me-2 text-accent"></i>Need Help?</h6>
+                <p class="text-muted small">Talk to our travel experts for customization, group bookings, or any queries.</p>
+                <a href="contact.html" class="btn btn-outline-accent w-100">Contact Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ PACKAGE 2: SINGAPORE ESCAPE ============ -->
+      <div class="pkg-detail" id="pkg2">
+        <div class="row g-5">
+          <div class="col-lg-8" data-aos="fade-up">
+            <div class="mb-4">
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem;">🌏 Singapore Escape – 4 Days, 3 Nights</h3>
+              <p class="text-muted">A perfectly planned 4-day escape showcasing Singapore's iconic sights, Sentosa Island adventures, and the magical Butterfly Park — ideal for first-time visitors wanting a rich yet compact experience.</p>
+            </div>
+            <div class="gallery-mosaic mb-5">
+              <img src="assets/images/singapore-010.webp" alt="Sentosa Island">
+              <img src="assets/images/singapore-012.webp" alt="Singapore City">
+              <img src="assets/images/singapore-014.webp" alt="Chinatown">
+            </div>
+            <h5 class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i>Inclusions</h5>
+            <ul class="inclusions-list mb-5">
+              <li><i class="bi bi-check-circle-fill"></i>3 Nights' accommodation at Aqueen Heritage Little India or similar</li>
+              <li><i class="bi bi-check-circle-fill"></i>Meals on Breakfast basis at the Hotel</li>
+              <li><i class="bi bi-check-circle-fill"></i>Return Airport Transfers</li>
+              <li><i class="bi bi-check-circle-fill"></i>All tours and transfers on SIC basis</li>
+              <li><i class="bi bi-check-circle-fill"></i>1-Way Cable Car and Luge & Sky Rides in Sentosa</li>
+            </ul>
+            <h5 class="mb-3"><i class="bi bi-calendar3 text-accent me-2"></i>Day-Wise Itinerary</h5>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">1</span><span class="day-title"><span class="day-emoji">🛩️</span>Welcome to Singapore – The Gateway to Excitement</span></div><div class="day-body">Arrive at Changi International Airport, greeted by our representative. Transfer to hotel. The day is yours — stroll Orchard Road, browse Bugis Street, or enjoy hawker centre food.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">2</span><span class="day-title"><span class="day-emoji">🏙️</span>Singapore Highlights Tour & Sentosa Island Adventure</span></div><div class="day-body">Morning half-day city tour covering <strong>Merlion Park</strong>, <strong>Orchard Road</strong>, and <strong>Chinatown</strong>. Afternoon at Sentosa Island — one-way cable car ride, Madame Tussauds 4-in-1 experience, and the spectacular <strong>Wings of Time</strong> night show.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">3</span><span class="day-title"><span class="day-emoji">🦋</span>Butterfly Park & Insect Kingdom – Nature's Wonders</span></div><div class="day-body">Visit the colourful <strong>Butterfly Park & Insect Kingdom</strong> on Sentosa Island — over 1,500 live butterflies, rare beetles, and interactive exhibits. A peaceful contrast to the city's buzz.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">4</span><span class="day-title"><span class="day-emoji">✈️</span>Departure from Singapore – Farewell with Fond Memories</span></div><div class="day-body">Relaxed breakfast, check-out, and comfortable transfer to Changi International Airport.</div></div>
+            <div class="alert alert-warning mt-4" style="border-radius: var(--radius-md); border-left: 4px solid #f97316;"><i class="bi bi-info-circle me-2"></i><strong>Note:</strong> This is a tentative itinerary. Final itinerary confirmed at time of booking.</div>
+          </div>
+          <div class="col-lg-4"><div class="sticky-pkg-sidebar" data-aos="fade-left"><div class="price-hero-box mb-4"><div class="per-person">Starting From</div><div class="big-price">₹40,500</div><div class="per-person mb-3">Per Person (T&C Apply)</div><a href="contact.html" class="btn btn-light w-100 fw-bold"><i class="bi bi-send me-2"></i>Book This Package</a></div><div class="feature-card mb-4"><h6 class="fw-bold mb-3"><i class="bi bi-info-circle me-2 text-accent"></i>Package Highlights</h6><ul class="inclusions-list"><li><i class="bi bi-clock"></i>4 Days / 3 Nights</li><li><i class="bi bi-building"></i>Hotel: Aqueen Heritage Little India</li><li><i class="bi bi-cup-hot"></i>Meals: Breakfast Included</li><li><i class="bi bi-bus-front"></i>Transfers: SIC Basis</li><li><i class="bi bi-star-fill text-warning"></i>Sentosa Island + Madame Tussauds</li><li><i class="bi bi-star-fill text-warning"></i>Wings of Time Show</li><li><i class="bi bi-star-fill text-warning"></i>Butterfly Park & Insect Kingdom</li></ul></div><div class="feature-card"><h6 class="fw-bold mb-3"><i class="bi bi-telephone me-2 text-accent"></i>Need Help?</h6><p class="text-muted small">Talk to our travel experts for customization or group bookings.</p><a href="contact.html" class="btn btn-outline-accent w-100">Contact Us</a></div></div></div>
+        </div>
+      </div>
+
+      <!-- ============ PACKAGE 3: SINGAPORE GETAWAY ============ -->
+      <div class="pkg-detail" id="pkg3">
+        <div class="row g-5">
+          <div class="col-lg-8" data-aos="fade-up">
+            <div class="mb-4">
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem;">🌏 Singapore Getaway – 4 Days, 3 Nights</h3>
+              <p class="text-muted">Step into Singapore with a perfect mix of excitement, culture, and relaxation. Highlights include a thrilling day at Universal Studios Singapore and Sentosa Island adventures.</p>
+            </div>
+            <div class="gallery-mosaic mb-5"><img src="assets/images/singapore-018.webp" alt="Universal Studios"><img src="assets/images/singapore-020.webp" alt="Singapore Skyline"><img src="assets/images/singapore-022.webp" alt="Sentosa"></div>
+            <h5 class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i>Inclusions</h5>
+            <ul class="inclusions-list mb-5">
+              <li><i class="bi bi-check-circle-fill"></i>3 Nights' accommodation at Value Hotel Thomson or similar</li>
+              <li><i class="bi bi-check-circle-fill"></i>Meals on Breakfast basis at the Hotel</li>
+              <li><i class="bi bi-check-circle-fill"></i>Return Airport Transfers & All Tours on SIC basis</li>
+            </ul>
+            <h5 class="mb-3"><i class="bi bi-calendar3 text-accent me-2"></i>Day-Wise Itinerary</h5>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">1</span><span class="day-title"><span class="day-emoji">🛬</span>Arrival in Singapore – Begin Your Island Adventure</span></div><div class="day-body">Welcome at Changi Airport, smooth transfer to hotel. Rest of the day at leisure — explore nearby malls, hawker centres, or take an evening stroll down Orchard Road.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">2</span><span class="day-title"><span class="day-emoji">🏙️</span>Explore Singapore's Icons & Sentosa's Wonders</span></div><div class="day-body">Half-day guided city tour: <strong>Merlion Park</strong>, Orchard Road, Chinatown. Afternoon at Sentosa Island — scenic cable car ride, Madame Tussauds 4-in-1, and the dazzling <strong>Wings of Time</strong> show.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">3</span><span class="day-title"><span class="day-emoji">🎢</span>Full Day at Universal Studios Singapore</span></div><div class="day-body">A full thrilling day at <strong>Universal Studios Singapore</strong> — 7 themed zones, epic rides, live shows, and movie magic. Transformers 3D, Revenge of the Mummy, Shrek 4D, and so much more!</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">4</span><span class="day-title"><span class="day-emoji">✈️</span>Departure from Singapore – Until We Meet Again</span></div><div class="day-body">Relaxed breakfast, check-out, comfortable departure transfer to Changi Airport. Safe travels!</div></div>
+            <div class="alert alert-warning mt-4" style="border-radius: var(--radius-md); border-left: 4px solid #f97316;"><i class="bi bi-info-circle me-2"></i><strong>Note:</strong> Tentative itinerary. Final confirmed at booking.</div>
+          </div>
+          <div class="col-lg-4"><div class="sticky-pkg-sidebar" data-aos="fade-left"><div class="price-hero-box mb-4"><div class="per-person">Starting From</div><div class="big-price">₹40,500</div><div class="per-person mb-3">Per Person (T&C Apply)</div><a href="contact.html" class="btn btn-light w-100 fw-bold"><i class="bi bi-send me-2"></i>Book This Package</a></div><div class="feature-card mb-4"><h6 class="fw-bold mb-3"><i class="bi bi-info-circle me-2 text-accent"></i>Package Highlights</h6><ul class="inclusions-list"><li><i class="bi bi-clock"></i>4 Days / 3 Nights</li><li><i class="bi bi-building"></i>Hotel: Value Hotel Thomson</li><li><i class="bi bi-cup-hot"></i>Meals: Breakfast Included</li><li><i class="bi bi-star-fill text-warning"></i>Universal Studios Full Day</li><li><i class="bi bi-star-fill text-warning"></i>Sentosa Island + Wings of Time</li></ul></div><div class="feature-card"><h6 class="fw-bold mb-3"><i class="bi bi-telephone me-2 text-accent"></i>Need Help?</h6><p class="text-muted small">Contact our experts for custom or group bookings.</p><a href="contact.html" class="btn btn-outline-accent w-100">Contact Us</a></div></div></div>
+        </div>
+      </div>
+
+      <!-- ============ PACKAGE 4: SINGAPORE & MALAYSIA ============ -->
+      <div class="pkg-detail" id="pkg4">
+        <div class="row g-5">
+          <div class="col-lg-8" data-aos="fade-up">
+            <div class="mb-4">
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem;">🌏 Singapore & Malaysia Discovery – 5 Days, 4 Nights</h3>
+              <p class="text-muted">Uncover the charm of Southeast Asia — Singapore's modern wonders and the cultural treasures of Kuala Lumpur and Genting Highlands, all in one seamless journey.</p>
+            </div>
+            <div class="gallery-mosaic mb-5"><img src="assets/images/singapore-025.webp" alt="Night Safari Singapore"><img src="assets/images/singapore-027.webp" alt="Petronas Towers"><img src="assets/images/singapore-029.webp" alt="Batu Caves"></div>
+            <h5 class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i>Inclusions</h5>
+            <ul class="inclusions-list mb-5">
+              <li><i class="bi bi-check-circle-fill"></i>2 Nights' accommodation in Singapore at Hotel Fortuna or similar</li>
+              <li><i class="bi bi-check-circle-fill"></i>2 Nights' accommodation in Kuala Lumpur at Ibis Styles Fraser Business or similar</li>
+              <li><i class="bi bi-check-circle-fill"></i>Meals on Breakfast basis at the Hotel</li>
+              <li><i class="bi bi-check-circle-fill"></i>Return Airport Transfers & All Transfers on SIC basis</li>
+              <li><i class="bi bi-check-circle-fill"></i>Night Safari Singapore</li>
+              <li><i class="bi bi-check-circle-fill"></i>Sentosa Island – Cable Car, Madame Tussauds, Wings of Time</li>
+              <li><i class="bi bi-check-circle-fill"></i>KL City Tour, Petronas, Genting Highlands & Batu Caves</li>
+            </ul>
+            <h5 class="mb-3"><i class="bi bi-calendar3 text-accent me-2"></i>Day-Wise Itinerary</h5>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">1</span><span class="day-title"><span class="day-emoji">🛬</span>Arrive Singapore – Evening Night Safari</span></div><div class="day-body">Arrive at Changi Airport, check-in at hotel. In the evening, experience the world's first nocturnal zoo — <strong>Singapore Night Safari</strong>. Guided tram through 7 geographic zones, spot tigers, leopards, elephants and more under the moonlight.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">2</span><span class="day-title"><span class="day-emoji">🏙️</span>Singapore City Highlights & Sentosa Island Escape</span></div><div class="day-body">Half-day city tour: <strong>Merlion Park</strong>, Orchard Road, Chinatown. Then Sentosa Island — cable car ride, Madame Tussauds 4-in-1, and the breathtaking <strong>Wings of Time</strong> show.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">3</span><span class="day-title"><span class="day-emoji">🏙️</span>Transfer to Kuala Lumpur – Explore Malaysia's Capital</span></div><div class="day-body">After breakfast, transfer to KL. Visit <strong>Petronas Twin Towers</strong>, King's Palace, National Monument, National Mosque, Jamek Mosque, Merdeka Square, and National Museum.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">4</span><span class="day-title"><span class="day-emoji">🏞️</span>Genting Highlands – Batu Caves & Mountain Fun</span></div><div class="day-body">Full-day to <strong>Genting Highlands</strong> — stop at sacred <strong>Batu Caves</strong> and the golden Lord Murugan statue, then ride the Genting Skyway Cable Car to the summit. Explore Skytropolis Indoor Theme Park, cool-climate gardens and views.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">5</span><span class="day-title"><span class="day-emoji">✈️</span>Farewell Kuala Lumpur – Departure with Beautiful Memories</span></div><div class="day-body">Relaxed final breakfast, check-out, comfortable transfer to Kuala Lumpur International Airport (KLIA). Safe travels!</div></div>
+            <div class="alert alert-warning mt-4" style="border-radius: var(--radius-md); border-left: 4px solid #f97316;"><i class="bi bi-info-circle me-2"></i><strong>Note:</strong> Tentative itinerary. Final confirmed at booking.</div>
+          </div>
+          <div class="col-lg-4"><div class="sticky-pkg-sidebar" data-aos="fade-left"><div class="price-hero-box mb-4"><div class="per-person">Starting From</div><div class="big-price">₹54,999</div><div class="per-person mb-3">Per Person (T&C Apply)</div><a href="contact.html" class="btn btn-light w-100 fw-bold"><i class="bi bi-send me-2"></i>Book This Package</a></div><div class="feature-card mb-4"><h6 class="fw-bold mb-3"><i class="bi bi-info-circle me-2 text-accent"></i>Package Highlights</h6><ul class="inclusions-list"><li><i class="bi bi-clock"></i>5 Days / 4 Nights</li><li><i class="bi bi-building"></i>2 Countries, 2 Hotels</li><li><i class="bi bi-cup-hot"></i>Meals: Breakfast Included</li><li><i class="bi bi-star-fill text-warning"></i>Night Safari Singapore</li><li><i class="bi bi-star-fill text-warning"></i>Petronas Twin Towers</li><li><i class="bi bi-star-fill text-warning"></i>Genting Highlands</li><li><i class="bi bi-star-fill text-warning"></i>Batu Caves</li></ul></div><div class="feature-card"><a href="contact.html" class="btn btn-outline-accent w-100">Contact Us</a></div></div></div>
+        </div>
+      </div>
+
+      <!-- ============ PACKAGE 5: CRUISE ============ -->
+      <div class="pkg-detail" id="pkg5">
+        <div class="row g-5">
+          <div class="col-lg-8" data-aos="fade-up">
+            <div class="mb-4">
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem;">⚓ Singapore Cruise Getaway – 6 Days, 5 Nights</h3>
+              <p class="text-muted">Set sail on an extraordinary 6-day journey blending Singapore's iconic cityscape with the serenity of a world-class cruise. City thrills on land, ocean bliss at sea.</p>
+            </div>
+            <div class="gallery-mosaic mb-5"><img src="assets/images/singapore-048.webp" alt="Cruise Ship"><img src="assets/images/singapore-050.webp" alt="Night Safari"><img src="assets/images/singapore-052.webp" alt="Universal Studios"></div>
+            <h5 class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i>Inclusions</h5>
+            <ul class="inclusions-list mb-5">
+              <li><i class="bi bi-check-circle-fill"></i>3 Nights' accommodation in Singapore at Ibis Novena or similar</li>
+              <li><i class="bi bi-check-circle-fill"></i>2 Nights on Genting Dream Cruise</li>
+              <li><i class="bi bi-check-circle-fill"></i>Meals: Breakfast at hotel + Breakfast on cruise</li>
+              <li><i class="bi bi-check-circle-fill"></i>Return Airport Transfers & All Transfers on SIC basis</li>
+              <li><i class="bi bi-check-circle-fill"></i>Night Safari, City Tour, Sentosa, Universal Studios</li>
+            </ul>
+            <h5 class="mb-3"><i class="bi bi-calendar3 text-accent me-2"></i>Day-Wise Itinerary</h5>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">1</span><span class="day-title"><span class="day-emoji">🛬</span>Arrival in Singapore – Night Safari Adventure</span></div><div class="day-body">Welcome to Singapore! After hotel check-in, evening at the <strong>Night Safari</strong> — the world's first nocturnal wildlife park. Guided tram, walking trails, and the Creatures of the Night show.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">2</span><span class="day-title"><span class="day-emoji">🏙️</span>City Landmarks & Sentosa Island Adventures</span></div><div class="day-body">Half-day city tour: Merlion Park, Orchard Road, Chinatown. Then <strong>Sentosa Island</strong> — cable car, Madame Tussauds 4-in-1, and <strong>Wings of Time</strong>.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">3</span><span class="day-title"><span class="day-emoji">🛳️</span>Set Sail – Transfer to Cruise & Begin Sea Adventure</span></div><div class="day-body">After hotel check-out, transfer to Singapore Cruise Centre. Board the luxurious <strong>Genting Dream Cruise</strong>. Explore world-class facilities, elegant staterooms, fine dining, and entertainment as the ship sets sail.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">4</span><span class="day-title"><span class="day-emoji">🌊</span>Cruise Day at Sea – Relax, Recharge & Enjoy</span></div><div class="day-body">A leisure day at sea — pool deck, spa treatments, duty-free shopping, live shows, themed restaurants, and endless ocean views. The floating resort offers everything for your perfect day.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">5</span><span class="day-title"><span class="day-emoji">🎢</span>Disembark & Universal Studios Adventure</span></div><div class="day-body">Disembark back in Singapore, hotel check-in and refresh. Then a thrilling full day at <strong>Universal Studios Singapore</strong> — all 7 zones of Hollywood magic!</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">6</span><span class="day-title"><span class="day-emoji">✈️</span>Farewell Singapore – Departure with Beautiful Memories</span></div><div class="day-body">Final breakfast at hotel. Check-out and comfortable transfer to Changi International Airport. Board your flight with unforgettable ocean and city memories!</div></div>
+            <div class="alert alert-warning mt-4" style="border-radius: var(--radius-md); border-left: 4px solid #f97316;"><i class="bi bi-info-circle me-2"></i><strong>Note:</strong> Tentative itinerary. Final confirmed at booking.</div>
+          </div>
+          <div class="col-lg-4"><div class="sticky-pkg-sidebar" data-aos="fade-left"><div class="price-hero-box mb-4"><div class="per-person">Starting From</div><div class="big-price">₹74,999</div><div class="per-person mb-3">Per Person (T&C Apply)</div><a href="contact.html" class="btn btn-light w-100 fw-bold"><i class="bi bi-send me-2"></i>Book This Package</a></div><div class="feature-card mb-4"><h6 class="fw-bold mb-3"><i class="bi bi-info-circle me-2 text-accent"></i>Package Highlights</h6><ul class="inclusions-list"><li><i class="bi bi-clock"></i>6 Days / 5 Nights</li><li><i class="bi bi-ship"></i>2 Nights on Genting Dream Cruise</li><li><i class="bi bi-cup-hot"></i>Breakfast + Cruise Meals</li><li><i class="bi bi-star-fill text-warning"></i>Night Safari</li><li><i class="bi bi-star-fill text-warning"></i>Sentosa + Wings of Time</li><li><i class="bi bi-star-fill text-warning"></i>Universal Studios</li></ul></div><div class="feature-card"><a href="contact.html" class="btn btn-outline-accent w-100">Contact Us</a></div></div></div>
+        </div>
+      </div>
+
+      <!-- ============ PACKAGE 6: 8 DAY ELEGANT ============ -->
+      <div class="pkg-detail" id="pkg6">
+        <div class="row g-5">
+          <div class="col-lg-8" data-aos="fade-up">
+            <div class="mb-4">
+              <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem;">🌟 Elegant Singapore Gateway – 8 Days, 7 Nights</h3>
+              <p class="text-muted">The ultimate Singapore immersion — for travelers who seek more than highlights. Explore Singapore Zoo, Bird Paradise, Night Safari, Singapore Flyer, Gardens by the Bay, and more, across 8 days of discovery.</p>
+            </div>
+            <div class="gallery-mosaic mb-5"><img src="assets/images/singapore-060.webp" alt="Gardens by the Bay"><img src="assets/images/singapore-062.webp" alt="Singapore Zoo"><img src="assets/images/singapore-064.webp" alt="Marina Bay"></div>
+            <h5 class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i>Inclusions</h5>
+            <ul class="inclusions-list mb-5">
+              <li><i class="bi bi-check-circle-fill"></i>7 Nights' accommodation at Novotel Singapore or similar</li>
+              <li><i class="bi bi-check-circle-fill"></i>Meals on Breakfast basis at the Hotel</li>
+              <li><i class="bi bi-check-circle-fill"></i>Return Airport Transfers & All Tours on SIC basis</li>
+            </ul>
+            <h5 class="mb-3"><i class="bi bi-calendar3 text-accent me-2"></i>Day-Wise Itinerary</h5>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">1</span><span class="day-title"><span class="day-emoji">🛬</span>Touchdown in Singapore – A City of Wonders Awaits</span></div><div class="day-body">Arrive at Changi Airport, transfer to Novotel Singapore. Settle in, explore nearby Orchard Road, and enjoy a relaxed first evening at your own pace.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">2</span><span class="day-title"><span class="day-emoji">🏝️</span>Sentosa Island Escape – Madame Tussauds, Oceanarium & Wings of Time</span></div><div class="day-body"><strong>Sentosa Island</strong> full day — cable car arrival, Madame Tussauds 4-in-1, Singapore Oceanarium (manta rays, sharks, coral reefs), and the grand <strong>Wings of Time</strong> show at 7:30 PM.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">3</span><span class="day-title"><span class="day-emoji">🏙️</span>Guided City Tour with Singapore Flyer Experience</span></div><div class="day-body">Guided tour: Merlion Park, Chinatown, Little India, Kampong Glam, Orchard Road. Highlight: ride the <strong>Singapore Flyer</strong> — one of the world's largest observation wheels with 360° views.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">4</span><span class="day-title"><span class="day-emoji">🎢</span>Full Day Adventure at Universal Studios Singapore</span></div><div class="day-body">All 7 themed zones of <strong>Universal Studios Singapore</strong> — Transformers 3D, Battlestar Galactica, Revenge of the Mummy, Shrek 4D, and more!</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">5</span><span class="day-title"><span class="day-emoji">🐾</span>Wildlife Wonders – Singapore Zoo, Bird Paradise & Night Safari</span></div><div class="day-body">A wildlife triple-bill: morning at <strong>Singapore Zoo</strong> (2,800+ animals, 300 species), afternoon at <strong>Bird Paradise</strong> (400+ species), and evening at the iconic <strong>Night Safari</strong> — tram ride through 7 geographic zones.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">6</span><span class="day-title"><span class="day-emoji">🏙️</span>Free Day / Optional Exploration</span></div><div class="day-body">Day at leisure — explore Jewel Changi Airport, Clarke Quay, Bugis Street, or the Botanic Gardens. Optional day trip or spa day available.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">7</span><span class="day-title"><span class="day-emoji">🌺</span>Gardens by the Bay & Marina Bay Sands SkyPark</span></div><div class="day-body">Morning at <strong>Gardens by the Bay</strong> — Flower Dome (world's largest glass greenhouse), Cloud Forest (35m indoor waterfall), Supertree Grove. Evening at <strong>Marina Bay Sands SkyPark</strong> — 57th-floor panoramic views of the entire city.</div></div>
+            <div class="itinerary-card"><div class="d-flex align-items-center"><span class="day-number">8</span><span class="day-title"><span class="day-emoji">✈️</span>Farewell Singapore – Departure with Cherished Memories</span></div><div class="day-body">Final relaxed breakfast, check-out, comfortable transfer to Changi International Airport. A wonderful end to an extraordinary 8-day journey!</div></div>
+            <div class="alert alert-warning mt-4" style="border-radius: var(--radius-md); border-left: 4px solid #f97316;"><i class="bi bi-info-circle me-2"></i><strong>Note:</strong> Tentative itinerary. Final confirmed at booking.</div>
+          </div>
+          <div class="col-lg-4"><div class="sticky-pkg-sidebar" data-aos="fade-left"><div class="price-hero-box mb-4"><div class="per-person">Starting From</div><div class="big-price">₹89,999</div><div class="per-person mb-3">Per Person (T&C Apply)</div><a href="contact.html" class="btn btn-light w-100 fw-bold"><i class="bi bi-send me-2"></i>Book This Package</a></div><div class="feature-card mb-4"><h6 class="fw-bold mb-3"><i class="bi bi-info-circle me-2 text-accent"></i>Package Highlights</h6><ul class="inclusions-list"><li><i class="bi bi-clock"></i>8 Days / 7 Nights</li><li><i class="bi bi-building"></i>Hotel: Novotel Singapore</li><li><i class="bi bi-cup-hot"></i>Meals: Breakfast Included</li><li><i class="bi bi-star-fill text-warning"></i>Singapore Zoo + Bird Paradise</li><li><i class="bi bi-star-fill text-warning"></i>Night Safari</li><li><i class="bi bi-star-fill text-warning"></i>Singapore Flyer</li><li><i class="bi bi-star-fill text-warning"></i>Universal Studios</li><li><i class="bi bi-star-fill text-warning"></i>Gardens by the Bay</li><li><i class="bi bi-star-fill text-warning"></i>Marina Bay SkyPark</li></ul></div><div class="feature-card"><a href="contact.html" class="btn btn-outline-accent w-100">Contact Us</a></div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TOP 15 ACTIVITIES IN SINGAPORE -->
+  <section class="section section-gradient">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="section-tag"><i class="bi bi-stars"></i> Must-Do Experiences</div>
+        <h2>🌟 Top 15 Must-Do Activities <span>in Singapore</span></h2>
+        <p>Your ultimate guide to unforgettable experiences in the Lion City — from futuristic gardens to thrilling theme parks.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="0"><div class="activity-card"><img src="assets/images/singapore-001.webp" alt="Gardens by the Bay"><div class="activity-card-body"><span class="activity-num">1</span><h5>Gardens by the Bay</h5><p>Supertree Grove, Cloud Forest, and the Flower Dome — where nature meets innovation.</p></div></div></div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="50"><div class="activity-card"><img src="assets/images/singapore-005.webp" alt="Universal Studios"><div class="activity-card-body"><span class="activity-num">2</span><h5>Universal Studios Singapore</h5><p>Southeast Asia's first Hollywood-themed park — 7 zones, epic rides, live shows.</p></div></div></div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100"><div class="activity-card"><img src="assets/images/singapore-009.webp" alt="Singapore Zoo"><div class="activity-card-body"><span class="activity-num">3</span><h5>Singapore Zoo</h5><p>Open-concept rainforest zoo with 2,800+ animals. Don't miss Jungle Breakfast!</p></div></div></div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="150"><div class="activity-card"><img src="assets/images/singapore-013.webp" alt="Marina Bay Sands"><div class="activity-card-body"><span class="activity-num">4</span><h5>Marina Bay Sands</h5><p>SkyPark 360° views, luxury shopping, world-class dining, and the Spectra light show.</p></div></div></div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="0"><div class="activity-card"><img src="assets/images/singapore-017.webp" alt="Sentosa Island"><div class="activity-card-body"><span class="activity-num">5</span><h5>Sentosa Island</h5><p>S.E.A. Aquarium, Adventure Cove Waterpark, beaches, and Wings of Time show.</p></div></div></div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="50"><div class="activity-card"><img src="assets/images/singapore-021.webp" alt="Singapore Flyer"><div class="activity-card-body"><span class="activity-num">6</span><h5>Singapore Flyer</h5><p>165-meter observation wheel with panoramic city views — perfect at sunset.</p></div></div></div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100"><div class="activity-card"><img src="assets/images/singapore-025.webp" alt="Night Safari"><div class="activity-card-body"><span class="activity-num">7</span><h5>Night Safari</h5><p>World's first nocturnal wildlife park — tram ride, walking trails, and animal encounters.</p></div></div></div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="150"><div class="activity-card"><img src="assets/images/singapore-029.webp" alt="Jewel Changi"><div class="activity-card-body"><span class="activity-num">8</span><h5>Jewel Changi Airport</h5><p>World's tallest indoor waterfall (40m), lush forest valley, shopping, and Canopy Park.</p></div></div></div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="0"><div class="activity-card"><img src="assets/images/singapore-033.webp" alt="Merlion Park"><div class="activity-card-body"><span class="activity-num">9</span><h5>Merlion Park</h5><p>Singapore's most iconic landmark — perfect photos, waterfront views, and city energy.</p></div></div></div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="50"><div class="activity-card"><img src="assets/images/singapore-037.webp" alt="Chinatown"><div class="activity-card-body"><span class="activity-num">10</span><h5>Chinatown</h5><p>Buddha Tooth Relic Temple, Maxwell Food Centre, and vibrant street markets.</p></div></div></div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100"><div class="activity-card"><img src="assets/images/singapore-041.webp" alt="Little India"><div class="activity-card-body"><span class="activity-num">11</span><h5>Little India</h5><p>Vibrant colors, spice markets, Sri Veeramakaliamman Temple, and authentic cuisine.</p></div></div></div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="150"><div class="activity-card"><img src="assets/images/singapore-045.webp" alt="Clarke Quay"><div class="activity-card-body"><span class="activity-num">12</span><h5>Clarke Quay</h5><p>Riverside dining, river cruises, live music, and Singapore's most vibrant nightlife.</p></div></div></div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="0"><div class="activity-card"><img src="assets/images/singapore-049.webp" alt="Botanic Gardens"><div class="activity-card-body"><span class="activity-num">13</span><h5>Singapore Botanic Gardens</h5><p>UNESCO Heritage site with the National Orchid Garden and tranquil Swan Lake.</p></div></div></div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="50"><div class="activity-card"><img src="assets/images/singapore-053.webp" alt="National Museum"><div class="activity-card-body"><span class="activity-num">14</span><h5>National Museum</h5><p>Singapore's oldest museum — immersive galleries, multimedia exhibits, and stunning architecture.</p></div></div></div>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100"><div class="activity-card"><img src="assets/images/singapore-057.webp" alt="S.E.A. Aquarium"><div class="activity-card-body"><span class="activity-num">15</span><h5>S.E.A. Aquarium</h5><p>100,000+ marine animals — the Open Ocean Habitat, Shark Seas, and dazzling coral reefs.</p></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="floating-shapes"><div class="shape shape-1"></div><div class="shape shape-2"></div></div>
+    <div class="container position-relative" style="z-index:2;" data-aos="zoom-in">
+      <h2>Ready to Explore <span>Singapore?</span></h2>
+      <p>Talk to our travel experts and get a personalized quote for your perfect Singapore escape. Group discounts available!</p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="contact.html" class="btn btn-accent btn-lg"><i class="bi bi-send me-2"></i>Get a Free Quote</a>
+        <a href="refund.html" class="btn btn-glass btn-lg"><i class="bi bi-file-text me-2"></i>Terms & Conditions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4"><div class="footer-brand"><h3><i class="bi bi-compass"></i> Wandernox</h3><p class="footer-tagline">Turning Miles into Smiles!</p><p>Your trusted travel partner for Singapore, Dubai, and beyond.</p><div class="social-links"><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i class="bi bi-instagram"></i></a><a href="#"><i class="bi bi-whatsapp"></i></a><a href="#"><i class="bi bi-youtube"></i></a></div></div></div>
+        <div class="col-lg-2 col-md-4"><h5>Quick Links</h5><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="international.html">International</a></li><li><a href="jibhi.html">Domestic</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+        <div class="col-lg-2 col-md-4"><h5>Singapore</h5><ul class="footer-links"><li><a href="#" onclick="switchPackage('pkg1',null)">5D/4N Delight</a></li><li><a href="#" onclick="switchPackage('pkg2',null)">4D/3N Escape</a></li><li><a href="#" onclick="switchPackage('pkg4',null)">& Malaysia</a></li><li><a href="#" onclick="switchPackage('pkg5',null)">Cruise Package</a></li></ul></div>
+        <div class="col-lg-4 col-md-4"><h5>Support</h5><ul class="footer-links"><li><a href="blog.html"><i class="bi bi-journal-text me-2"></i>Blog</a></li><li><a href="refund.html"><i class="bi bi-receipt me-2"></i>Payment & Refund Policy</a></li><li><a href="refund.html#terms"><i class="bi bi-file-text me-2"></i>Terms & Conditions</a></li><li><a href="contact.html"><i class="bi bi-envelope me-2"></i>Write to Us</a></li></ul></div>
+      </div>
+      <hr>
+      <div class="footer-bottom"><p>&copy; 2026 Wandernox. All rights reserved. Crafted with <i class="bi bi-heart-fill text-danger"></i> for travelers.</p></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true, offset: 100 });
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('mainNav');
+      const btn = document.querySelector('.back-to-top');
+      if (window.scrollY > 50) { nav.classList.add('scrolled'); btn.classList.add('visible'); }
+      else { nav.classList.remove('scrolled'); btn.classList.remove('visible'); }
+    });
+    window.addEventListener('load', () => { document.querySelector('.preloader').classList.add('hidden'); });
+    document.querySelector('.back-to-top').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    const heroImages = {
+      pkg1: 'assets/images/singapore-009.webp',
+      pkg2: 'assets/images/singapore-013.webp',
+      pkg3: 'assets/images/singapore-017.webp',
+      pkg4: 'assets/images/singapore-025.webp',
+      pkg5: 'assets/images/singapore-048.webp',
+      pkg6: 'assets/images/singapore-060.webp'
+    };
+
+    function switchPackage(pkgId, tabEl) {
+      // Hide all
+      document.querySelectorAll('.pkg-detail').forEach(d => d.classList.remove('active'));
+      document.querySelectorAll('.pkg-tab').forEach(t => t.classList.remove('active'));
+      // Show selected
+      const detail = document.getElementById(pkgId);
+      if (detail) detail.classList.add('active');
+      if (tabEl) tabEl.classList.add('active');
+      // Update hero image
+      const imgEl = document.getElementById('heroImg');
+      if (imgEl && heroImages[pkgId]) imgEl.src = heroImages[pkgId];
+      // Sync the dropdown in booking bar
+      const sel = document.getElementById('pkgSelect');
+      if (sel) sel.value = pkgId;
+      // Scroll to packages
+      document.querySelector('.pkg-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
+</html>
