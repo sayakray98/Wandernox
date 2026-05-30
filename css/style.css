@@ -1496,7 +1496,7 @@ img {
   border-radius: var(--radius-lg);
   padding: 24px 32px;
   box-shadow: var(--shadow-lg);
-  margin-top: -60px;
+  margin-top: 0px;
   position: relative;
   z-index: 10;
 }
